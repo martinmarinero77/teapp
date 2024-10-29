@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ContadorController;
 
 
@@ -30,3 +31,4 @@ Route::get('/contador/reinicio', [ContadorController::class, 'reiniciar'])->name
 Route::get('/contador/duplicar/{número}', [ContadorController::class, 'duplicar'])->name('contador.duplicar');
 Route::get('/contador/establecer', [ContadorController::class, 'establecer'])->name('contador.establecer');
 Route::get('/contador/alerta/{número}', [ContadorController::class, 'mostrarAlerta'])->name('contador.alerta');
+Route::resource('patients', PatientController::class)->middleware('auth');;

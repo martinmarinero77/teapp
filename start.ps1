@@ -8,6 +8,10 @@ if ($currentPath -match 'src$' -or $currentPath -match 'src\\$') {
 }
 
 Set-Location src
+if ($args -contains '-r') {
+    Remove-Item database/database.sqlite -ErrorAction SilentlyContinue
+    php artisan migrate --force --seed
+}
 
 $vite = Start-Process -FilePath "powershell.exe" -ArgumentList "-Command", "npm run dev" -PassThru -NoNewWindow
 $artisan = Start-Process -FilePath "powershell.exe" -ArgumentList "-Command", "php artisan serve" -PassThru -NoNewWindow
