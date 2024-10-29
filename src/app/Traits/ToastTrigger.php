@@ -69,6 +69,12 @@ trait ToastTrigger
         $this->_toast($message, $duration, "info");
     }
 
+    public function alert(
+        string $message
+    ) {
+        $this->_toast($message, 100000, 'alert');
+    }
+
     public function delayedToast(
         string $message,
         int $duration = self::DEFAULT_TOAST_DURATION,

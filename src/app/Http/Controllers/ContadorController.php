@@ -47,8 +47,15 @@ class ContadorController extends Controller
     {
         $número = $request->query('número', 0); // Obtén 'número' desde la cadena de consulta
         $número = min(max($número, 0), 10); // Limitar entre 0 y 10
-        $this->log('Número establecido');
+        $this->log(message: 'Número establecido');
         return view('contador', compact('número'));
     }
 
+    public function mostrarAlerta($número)
+    {
+        $número=($número);
+        $this->alert(message: 'Hola, soy una alerta');
+        return view('contador', compact('número'));
+    }
 }
+

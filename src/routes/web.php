@@ -29,3 +29,4 @@ Route::get('/contador/dec/{número}', [ContadorController::class, 'decrementar']
 Route::get('/contador/reinicio', [ContadorController::class, 'reiniciar'])->name('contador.reinicio');
 Route::get('/contador/duplicar/{número}', [ContadorController::class, 'duplicar'])->name('contador.duplicar');
 Route::get('/contador/establecer', [ContadorController::class, 'establecer'])->name('contador.establecer');
+Route::get('/contador/alerta/{número}', [ContadorController::class, 'mostrarAlerta'])->name('contador.alerta');

@@ -18,6 +18,16 @@
                 </div>
             </x-toast>
 
+            <x-toast name="alert">
+                <div class="bg-slate-400 shadow-lg p-6 border border-red-400 rounded-md">
+                    <x-toast-message />
+                    <x-button class="bg-cyan-500 hover:bg-cyan-600 mt-4"
+                        onclick="document.getElementById('toast-alert').style.display = 'none'">
+                        Cerrar
+                    </x-button>
+                </div>
+            </x-toast>
+
             <x-toast name="success">
                 <div class="bg-green-600 shadow-lg p-6 border border-transparent rounded-md">
                     <x-toast-message />

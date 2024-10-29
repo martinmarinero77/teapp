@@ -32,6 +32,12 @@
                     Duplicar
                 </x-button>
 
+                <!--Boton para mostrar alerta -->
+                <x-button class="bg-red-500 hover:bg-red-600 m-3"
+                    onclick="location.href='{{ route('contador.alerta', ['número' => $número]) }}'">
+                    Alerta
+                </x-button>
+
                 <!--Boton para establecer un valor -->
                 <form action="{{ route('contador.establecer') }}" method="GET" class="flex items-center">
                     <input name="número" type="number" min="0" max="10" class="border border-gray-300 rounded p-2 m-3"
