@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\DebugHelper;
 use App\Traits\ToastTrigger;
 use Illuminate\Http\Request;
 
 class ContadorController extends Controller
 {
-    use ToastTrigger;
+    use ToastTrigger,DebugHelper;
 
     public function index()
     {
@@ -46,6 +47,7 @@ class ContadorController extends Controller
     {
         $número = $request->query('número', 0); // Obtén 'número' desde la cadena de consulta
         $número = min(max($número, 0), 10); // Limitar entre 0 y 10
+        $this->log('Número establecido');
         return view('contador', compact('número'));
     }
 
