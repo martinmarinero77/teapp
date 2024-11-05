@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PatientController extends Controller
 {
     public function index(): View {
-        $patients = Patient::all();
+        $patients = Patient::latest()->paginate(5);;
         return view('patients.index', compact('patients'));
     }
 
@@ -19,7 +19,7 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'codigo' => 'required|unique:patients',
             'apellidos' => 'required',
             'nombres' => 'required',
@@ -30,7 +30,7 @@ class PatientController extends Controller
             'email' => 'required|email|unique:patients',
             'direccion' => 'required',
         ]);
-        Patient::create($request->all());
+        Patient::create($validated);
         return redirect()->route('patients.index');
     }
 
