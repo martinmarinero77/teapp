@@ -27,8 +27,8 @@ class ActivityFactory extends Factory
         }
 
         return [
-            "name"=> $this->faker->sentence(2,false),
-            "description"=> $this->faker->paragraph(4, true),
+            "name"=> $this->faker->sentence(2),
+            "description"=> $this->faker->paragraph(),
             "image" => $base64Image,
         ];
     }
