@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -20,6 +21,8 @@ Route::middleware('permission:see-panel')->group(function () {
     Route::get('/pull-events', [EventController::class, 'pullEvents'])->name('pull-events');
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+    Route::resource('patients', PatientController::class)->middleware('auth');
+    Route::resource('activities', ActivityController::class)->middleware('auth');
 });
 
 // Rutas de la aplicación
@@ -31,4 +34,3 @@ Route::get('/contador/reinicio', [ContadorController::class, 'reiniciar'])->name
 Route::get('/contador/duplicar/{número}', [ContadorController::class, 'duplicar'])->name('contador.duplicar');
 Route::get('/contador/establecer', [ContadorController::class, 'establecer'])->name('contador.establecer');
 Route::get('/contador/alerta/{número}', [ContadorController::class, 'mostrarAlerta'])->name('contador.alerta');
-Route::resource('patients', PatientController::class)->middleware('auth');
